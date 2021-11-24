@@ -17,7 +17,9 @@ import java.awt.event.MouseEvent;
 public class MusicApp extends Window{
     static{
         new Layer("BACK");
+        new Layer("NOTE");
         new Layer("FORE");
+        
     }
 
     public MusicApp(){

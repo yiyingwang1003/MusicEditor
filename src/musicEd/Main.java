@@ -13,7 +13,7 @@ public class Main {
         //Window.PANEL = new PaintInk();
        //Window.PANEL = new Game();
         //Window.PANEL = new Paint();
-        //Window.PANEL = new ShapeTrainer();
+        // Window.PANEL = new ShapeTrainer();
         // Window.PANEL = new ReactionTest();
         Window.PANEL = new MusicApp();
         Window.launch();

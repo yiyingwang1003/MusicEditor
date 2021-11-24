@@ -14,4 +14,5 @@ public class UC {
     public static final String pathToShapeDB = "/Users/wangyiying/Google Drive/My Drive/NEU/Java/MusicEditor/src/musicEd/ShapeDB.dat";
     public static final int noBid = 9999;
     public static final String FontName = "sinfonia";
+    public static final int snapTime = 30;
 }

@@ -94,10 +94,51 @@ public class Staff extends Mass{
 
         });
 
+        addReaction(new Reaction("SW-SW"){  // create note head
+            public int bid(Gesture gest) {
+                int x = gest.vs.xM(), y = gest.vs.yM();
+                G.LoHi m = Page.PAGE.xMargin;
+                if(x < m.lo || x > m.hi){return UC.noBid;}
+                int H = Staff.this.H(), top = Staff.this.yTop() - H, bot = Staff.this.yBot() + H;
+                if(y < top || y > bot){return UC.noBid;}
+                return 10;
+            }
+
+            public void act(Gesture gest) {
+               new Head(Staff.this, gest.vs.xM(), gest.vs.yM());
+            }
+
+        });
+
+        addReaction(new Reaction("E-S"){  // create one eighth rest
+            public int bid(Gesture gest) {
+                int x = gest.vs.xL(), y = gest.vs.yM();
+                G.LoHi m = Page.PAGE.xMargin;
+                if(x < m.lo || x > m.hi){return UC.noBid;}
+                int H = Staff.this.H(), top = Staff.this.yTop() - H, bot = Staff.this.yBot() + H;
+                if(y < top || y > bot){return UC.noBid;}
+                return 10;
+            }
+
+            public void act(Gesture gest) {
+               Time t = Staff.this.sys.gTime(gest.vs.xL());
+               (new Rest(Staff.this, t)).nFlag = 1;
+            }
+
+        });
+
     }
 
     public int yTop(){return sys.yTop() + sysOff();}
     public int yBot(){return yTop() + fmt.height();}
+    public int H(){return fmt.H;}
+    public int yLine(int line){return yTop() + line * H();}
+    public int lineOfY(int y){
+        int H = H();
+        int bias = 50;
+        int top = yTop() - H * bias;
+        return (y - top + H / 2) / H - bias; // add H/2 to do grounding
+    }
     public int sysOff(){return sys.page.sysFmt.staffOffsets.get(iStaff);}
     public void show(Graphics g){
         G.LoHi m = Page.PAGE.xMargin;

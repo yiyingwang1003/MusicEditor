@@ -60,7 +60,7 @@ public class ReactionTest extends Window {
                     return Math.abs(x - Box.this.vs.xM());
                 }
 
-                public void act(Gesture gest) {Box.this.delete();}
+                public void act(Gesture gest) {Box.this.deleteMass();}
             });
 
         }

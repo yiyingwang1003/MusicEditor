@@ -3,6 +3,7 @@ package musicEd.sanbox;
 import musicEd.graphicsLib.G;
 import musicEd.graphicsLib.Window;
 //import musicEd.music.Glyph;
+//import musicEd.music.Glyph;
 import musicEd.music.Page;
 import musicEd.music.UC;
 import musicEd.reaction.Gesture;
@@ -38,6 +39,13 @@ public class MusicApp extends Window{
         g.setColor(Color.BLACK);
 
         Ink.BUFFER.show(g);
+        // if (Page.PAGE != null){
+        //     int H = 32;
+        //     Glyph.HEAD_Q.showAt(g, H, 200, Page.PAGE.yMargin.lo + 4 * H);
+        //     g.setColor(Color.RED);
+        //     g.drawRect(200, Page.PAGE.yMargin.lo + 3 * H, 24*H/10, 2*H);
+        // }
+
         // if (Page.PAGE != null){
         //     Glyph.CLEF_G.showAt(g, 8, 100, Page.PAGE.yMargin.lo+4*8);
         //     Glyph.HEAD_W.showAt(g, 8, 200, Page.PAGE.yMargin.lo+4*8);

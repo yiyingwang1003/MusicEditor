@@ -15,4 +15,6 @@ public class UC {
     public static final int noBid = 9999;
     public static final String FontName = "sinfonia";
     public static final int snapTime = 30;
+    public static final int restAugDotOffSet = 30;
+    public static final int augDotSpacing = 12;
 }

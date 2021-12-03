@@ -10,7 +10,8 @@ public class Sys extends Mass{
     public Page page;
     public int iSys;
     public Time.List times;
-
+    public Stem.List stems = new Stem.List();
+    
     public Sys(Page page, int iSys){
         super("BACK");
         this.page = page;

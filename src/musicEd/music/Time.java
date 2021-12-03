@@ -28,7 +28,8 @@ public class Time {  // time is part of the system
         if (s.heads.size() == 0){
             System.out.println("Empty headlist after steming");
         }else{
-            s.setWrongSide();
+            s.setWrongSides();
+            s.staff.sys.stems.add(s);
         }
     }
     //-------------list--------------

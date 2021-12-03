@@ -27,6 +27,9 @@ public class Glyph{
     public static Glyph FLAG4D = new Glyph((char)61493, 16, 0, 8);
     public static Glyph FLAG4U = new Glyph((char)61494, 16, 0, -3);
     
+    public static Glyph[] UPFLAGS = {FLAG1U, FLAG2U, FLAG3U, FLAG4U};
+    public static Glyph[] DOWNFLAGS = {FLAG1D, FLAG2D, FLAG3D, FLAG4D};
+
     public static Glyph REST_W = new Glyph((char)61499, 16, 0, 6);
     public static Glyph REST_H = new Glyph((char)61499, 16, 0, 7);
     public static Glyph REST_Q = new Glyph((char)61501, 16, 0, 5);

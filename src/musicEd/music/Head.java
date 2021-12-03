@@ -6,9 +6,10 @@ import musicEd.reaction.Reaction;
 
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.Collections;
 
 
-public class Head extends Mass{
+public class Head extends Mass implements Comparable<Head>{
     public Staff staff;
     public int line;  // line is the y coodinate
     public Time time;
@@ -55,6 +56,20 @@ public class Head extends Mass{
             }
 
         });
+
+        addReaction(new Reaction("DOT"){
+            public int bid(Gesture gest){
+                int xH = Head.this.X(), yH = Head.this.Y(), h = Head.this.staff.H(), w = Head.this.W();
+                int x = gest.vs.xM(), y = gest.vs.yM();
+                if (x < xH || x > xH + 2 * w || y < yH - h || y > yH + h){return UC.noBid;}
+                return Math.abs(xH + w - x) + Math.abs(yH - y);
+            }
+            public void act(Gesture gest){
+                if (Head.this.stem != null){
+                    Head.this.stem.cycleDot();
+                }
+            }
+        });
     }
 
     public int W(){return 24*staff.H()/10;}
@@ -91,14 +106,41 @@ public class Head extends Mass{
     public void show(Graphics g){
         int H = staff.H();
         Glyph glyph = forcedGlyph != null ? forcedGlyph : normalGlyph();
-        glyph.showAt(g, H, time.x, staff.yLine(line));
+
+        // g.setColor(wrongSide? Color.GREEN : Color.BLUE);
+        // if (stem != null && stem.heads.size() != 0 && this == stem.firstHead()){
+        //     g.setColor(Color.RED);
+        // }
+        g.setColor(Color.BLACK);
+        glyph.showAt(g, H, X(), staff.yLine(line));
+
+        if (stem != null){
+            int off = UC.restAugDotOffSet, sp = UC.augDotSpacing;
+            for (int i = 0; i<stem.nDot; i++){
+                g.fillOval(time.x + off + i * sp, Y() - 3 * H / 2, 2 * H / 3, 2 * H / 3);
+
+            }
+        }
     }
     public Glyph normalGlyph(){
+        if (stem == null){return Glyph.HEAD_Q;}
+        if (stem.nFlag == -1){return Glyph.HEAD_HALF;}
+        if (stem.nFlag == -2){return Glyph.HEAD_W;}
+
         return Glyph.HEAD_Q;
+    }
+
+    @Override
+    public int compareTo(Head o) {
+        return (staff.iStaff != o.staff.iStaff) ? staff.iStaff - o.staff.iStaff : line - o.line;
     }
 
     //-----------list-------------
     public static class List extends ArrayList<Head>{
-        
+        public void sort(){
+            Collections.sort(this);
+        }
     }
+
+   
 }

@@ -2,8 +2,8 @@ package musicEd.sanbox;
 
 import musicEd.graphicsLib.G;
 import musicEd.graphicsLib.Window;
-//import musicEd.music.Glyph;
-//import musicEd.music.Glyph;
+// import musicEd.music.Beam;
+// import musicEd.music.Glyph;
 import musicEd.music.Page;
 import musicEd.music.UC;
 import musicEd.reaction.Gesture;
@@ -12,7 +12,6 @@ import musicEd.reaction.Layer;
 import musicEd.reaction.Reaction;
 
 import java.awt.*;
-
 import java.awt.event.MouseEvent;
 
 public class MusicApp extends Window{
@@ -33,6 +32,12 @@ public class MusicApp extends Window{
             }
         });
     }
+
+        // test for polygons
+    // public static int[] xPoly = {100, 200, 200, 100};
+    // public static int[] yPoly = {50, 70, 80, 60};
+    // public static Polygon poly = new Polygon(xPoly, yPoly, 4);
+
     public void paintComponent(Graphics g){
         G.fillBackground(g);
         Layer.ALL.show(g);
